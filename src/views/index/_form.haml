@@ -11,7 +11,7 @@
 
     .form-group
       %label.control-label{:for => "select-year"} Datum
-      .col-md-4.form-inline
+      .form-inline
         %select#select-month.form-control{:name => "select-month"}
           %option{:value => "Januar"} Januar
           %option{:value => "Februar"} Februar
@@ -21,14 +21,13 @@
           %option{:value => "Juni"} Juni
           %option{:value => "Juli"} Juli
           %option{:value => "August"} August
+          %option{:value => "September"} September
           %option{:value => "Oktober"} Oktober
           %option{:value => "November"} November
           %option{:value => "Dezember"} Dezember
 
         %select#select-year.form-control{:name => "select-year"}
-          %option{:value => "2018"} 2018
-          %option{:value => "2017"} 2017
-          %option{:value => "2016"} 2016
+
 
     .form-group
       %label.control-label{:for => "input-free-text"} Freitext

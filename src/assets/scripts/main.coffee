@@ -31,6 +31,11 @@ do ->
     $previewFreeLine.text($('#input-free-text').val())
 
 
+  currentYear = (new Date()).getFullYear()
+
+  for year in [currentYear, currentYear - 1, currentYear - 2, currentYear - 3]
+    $('#select-year').append($('<option>', {value: year, text: year}))
+
   $('#button-print').click(->
     $preview.print()
   )
