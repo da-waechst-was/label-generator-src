@@ -6,9 +6,14 @@ do ->
     if !doc
       $('<iframe>').hide().attr('name', frameName).appendTo document.body
       doc = window.frames[frameName]
+      head = doc.document.head
+      link = doc.document.createElement("link")
+      link.type = "text/css"
+      link.rel = "stylesheet"
+      link.href = "styles/main.css"
+      head.appendChild(link)
 
-    content = @parent().html() + '<link rel="stylesheet" href="/styles/main.css" type="text/css">'
-    doc.document.body.innerHTML = content
+    doc.document.body.innerHTML = @parent().html()
     doc.window.print()
     this
 
@@ -32,6 +37,7 @@ do ->
 
   $('#input-name').keyup renderPreview
   $('#input-parcel').keyup renderPreview
+  $('#input-parcel').change renderPreview
   $('#input-free-text').keyup renderPreview
   $('#select-kga').change renderPreview
   $('#select-month').change renderPreview
