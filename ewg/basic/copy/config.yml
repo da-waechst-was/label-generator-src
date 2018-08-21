@@ -1,0 +1,19 @@
+development: &default
+  enabled: true
+  selector: '**/*'
+  repetitive:
+    -
+      source: 'src/assets/public'
+      target: 'dist'
+    -
+      source: 'src/assets/images'
+      target: 'dist/images'
+    -
+      source: 'node_modules/bootstrap-sass/assets/fonts/bootstrap'
+      target: 'dist/fonts'
+    
+test:
+  <<: *default
+
+production:
+  <<: *default

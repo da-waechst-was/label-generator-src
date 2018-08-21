@@ -1,0 +1,41 @@
+body
+  position: relative
+  color: $page-color-black
+  font-size: 16px
+  &::after
+    content: ""
+    opacity: 0.5
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    position: absolute
+    z-index: -1
+    background: url('../images/bg.webp') top center no-repeat
+    background-size: cover
+
+
+a, a:hover
+  color: $page-color-green
+  font-weight: bold
+
+.generator-title
+  padding: 30px 0 20px 0
+
+.preview-title
+  +min-width-md
+    display: none
+
+.btn-success
+  background-color: $page-color-green
+
+.content-wrapper
+  margin: 0 auto
+  background-color: #fff
+
+  .content-inner-wrapper
+    padding: 20px 15px
+    +headlines
+      text-align: center
+    p
+      text-align: center

@@ -1,0 +1,12 @@
+development: &default
+  enabled: false
+  source: ''
+  target: ''
+  selector: '**/style.css'
+  suffix: ''
+
+test: &test
+  <<: *default
+
+production: &production
+  <<: *default

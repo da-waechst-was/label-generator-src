@@ -1,0 +1,100 @@
+// min-width: $screen-xs
+@mixin min-width-xxs
+  @content
+
+@mixin max-width-xxs
+  @media (max-width: $screen-xs-min)
+    @content
+
+@mixin min-width-xs
+  @media (min-width: $screen-xs-min)
+    @content
+
+// max-width: $screen-xs
+@mixin max-width-xs
+  @media (max-width: $screen-xs-max)
+    @content
+
+// min-width: $screen-sm
+@mixin min-width-sm
+  @media (min-width: $screen-sm-min)
+    @content
+
+// max-width: $screen-sm
+@mixin max-width-sm
+  @media (max-width: $screen-sm-max)
+    @content
+
+// min-width: $screen-md
+@mixin min-width-md
+  @media (min-width: $screen-md-min)
+    @content
+
+// max-width: $screen-md
+@mixin max-width-md
+  @media (max-width: $screen-md-max)
+    @content
+
+// min-width: $screen-lg
+@mixin min-width-lg
+  @media (min-width: $screen-lg-min)
+    @content
+
+// hide element in specific viewport range
+@mixin hide-xs
+  @media (max-width: $screen-xs-max)
+    display: none
+
+@mixin hide-sm
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+    display: none
+
+@mixin hide-md
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+    display: none
+
+@mixin hide-lg
+  @media (min-width: $screen-lg-min)
+    display: none
+
+// classes for hiding elements
+.hidden-xs
+  +hide-xs
+
+.hidden-sm
+  +hide-sm
+
+.hidden-md
+  +hide-md
+
+.hidden-lg
+  +hide-lg
+
+//hide elements from an specific point
+@mixin hide-from-xs
+  @media (min-width: $screen-xs-min)
+    display: none
+
+@mixin hide-from-sm
+  @media (min-width: $screen-sm-min)
+    display: none
+
+@mixin hide-from-md
+  @media (min-width: $screen-md-min)
+    display: none
+
+@mixin hide-from-lg
+  +hide-lg
+
+// classes for hiding elements
+.hidden-from-xs
+  +hide-from-xs
+
+.hidden-from-sm
+  +hide-from-sm
+
+.hidden-from-md
+  +hide-from-md
+
+.hidden-from-lg
+  +hide-from-lg

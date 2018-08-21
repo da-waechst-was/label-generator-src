@@ -1,0 +1,58 @@
+%article
+  %h2.generator-title Etiketten-Generator
+
+.form-horizontal.form
+  %fieldset
+    .form-group
+      %label.control-label{:for => "input-name"} Name
+      .control-input
+        %input#input-name.form-control.input-md{:name => "input-name", :placeholder => "Apfel-Zimt-Gelee", :required => "required", :type => "text", :value => "Apfel-Zimt-Gelee"}
+
+
+    .form-group
+      %label.control-label{:for => "select-year"} Datum
+      .col-md-4.form-inline
+        %select#select-month.form-control{:name => "select-month"}
+          %option{:value => "Januar"} Januar
+          %option{:value => "Februar"} Februar
+          %option{:value => "März"} März
+          %option{:value => "April"} April
+          %option{:value => "Mai"} Mai
+          %option{:value => "Juni"} Juni
+          %option{:value => "Juli"} Juli
+          %option{:value => "August"} August
+          %option{:value => "Oktober"} Oktober
+          %option{:value => "November"} November
+          %option{:value => "Dezember"} Dezember
+
+        %select#select-year.form-control{:name => "select-year"}
+          %option{:value => "2018"} 2018
+          %option{:value => "2017"} 2017
+          %option{:value => "2016"} 2016
+
+    .form-group
+      %label.control-label{:for => "input-free-text"} Freitext
+      .control-input
+        %input#input-free-text.form-control.input-md.input-freetext{:name => "input-free-text", :placeholder => "", :type => "text"}
+        %span.help-block (maximal.200 Zeichen)
+
+    .form-group
+      %label.control-label{:for => "select-kga"} Parzelle
+      .form-inline
+        %input#input-parcel.form-control.input-md.input-parcel{:name => "input-parcel", :placeholder => "365", :type => "number", value: "365"}
+
+        %select#select-kga.form-control{:name => "select-kga"}
+          %option{:value => "Bornholm Eins e.V."} Bornholm Eins e.V.
+          %option{:value => "Bornholm Zwei e.V"} Bornholm Zwei e.V
+
+      .form-group
+        %label.control-label
+        %span.help-block
+          (Deine Anlage fehlt? Dann
+          = @link_to 'schreib', 'mailto:interesse@dawaechstwas.de'
+          uns)
+
+    .form-group
+      %label.control-label
+      .control-input
+        %button#button-print.btn.btn-success.pull-right{:name => "button-print"} Drucken

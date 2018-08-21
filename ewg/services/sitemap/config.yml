@@ -1,0 +1,18 @@
+development: &default
+  enabled: false
+  source: 'dist'
+  selector: '*.html'
+  target: 'dist'
+  siteUrl: 'https://www.creative-workflow.berlin'
+  fileName: 'sitemap.xml'
+  changefreq: 'weekly'
+  blacklist:
+    - 'imprint.html'
+    - 'privacy.html'
+    - 'legal.html'
+
+test:
+  <<: *default
+
+production:
+  <<: *default

@@ -1,0 +1,11 @@
+development: &default
+  enabled: false
+  target: 'dist/scripts'
+  repetitive:
+    -
+    
+test:
+  <<: *default
+
+production:
+  <<: *default

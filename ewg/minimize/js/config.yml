@@ -1,0 +1,14 @@
+development: &default
+  enabled: false
+  suffix: '.min'
+  selector: '**/*.js'
+  repetitive:
+    -
+      source: 'js'
+      target: 'js'
+
+test:
+  <<: *default
+
+production:
+  <<: *default
