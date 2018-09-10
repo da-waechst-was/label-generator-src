@@ -18,16 +18,26 @@ do ->
     this
 
   $preview = $('.preview-screen')
+  $previewImage    = $('.label-background', $preview)
   $previewName     = $('.name', $preview)
-  $previewSubLine  = $('.sub-line', $preview)
+  $previewFrom     = $('.from', $preview)
+  $previewDate     = $('.date', $preview)
   $previewFreeLine = $('.free-line', $preview)
+
+  $('.color-chooser li').click( (e)->
+    imagePath = "images/labels/#{e.currentTarget.className}.jpg"
+    $previewImage.prop('src', imagePath)
+    $preview.get(0).className = "preview-screen #{e.currentTarget.className}"
+  )
+
+
 
   renderPreview = ->
     $previewName.text($('#input-name').val())
     date   = 'Vom ' + $('#select-month').val() + ' ' + $('#select-year').val()
     parcel = 'Parzelle ' + $('#input-parcel').val()
     kga    = $('#select-kga').val()
-    $previewSubLine.text("#{date} | #{parcel} | #{kga}")
+    $previewFrom.text("#{date} | #{parcel} | #{kga}")
     $previewFreeLine.text($('#input-free-text').val())
 
 

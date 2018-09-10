@@ -2,8 +2,14 @@
 %article.preview
   %h2.preview-title Vorschau
 
-  .preview-screen
-    = @image_tag 'label-bg-97-42.png', class: 'label-background'
+  %ul.color-chooser
+    %li.bordeaux
+    %li.himbeere
+    %li.apricot
+
+  .preview-screen.bordeaux
+    = @image_tag 'labels/bordeaux.jpg', class: 'label-background'
     .name
-    .sub-line
+    .date
+    .from
     .free-line
