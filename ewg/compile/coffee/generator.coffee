@@ -3,11 +3,15 @@ coffee      = require 'gulp-coffee'
 uglify      = require 'gulp-uglify'
 sourcemaps  = require 'gulp-sourcemaps'
 stage       = require('ewg-config').stage
+include     = require 'gulp-include'
 
 g.generate (config, index) =>
   g.src("#{config.source}/#{config.selector}")
    .pipe(
-      sourcemaps.init())
+     sourcemaps.init())
+   .pipe(
+      include({ extensions: 'coffee' }))
+
    .pipe(
       coffee().on('error', g.log))
    .pipe(
