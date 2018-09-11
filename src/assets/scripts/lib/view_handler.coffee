@@ -1,4 +1,11 @@
+
 class ViewHandler
+  @colors = [
+    'bordeaux'
+    'himbeere'
+    'apricot'
+  ]
+
   constructor: (@container) ->
     @background = $('.label-background', @container)
     @name       = $('.name', @container)
@@ -11,10 +18,14 @@ class ViewHandler
     @render()
 
   setupColorChooser: =>
+    for color in ViewHandler.colors
+      $('.color-chooser').append("<li class='#{color}' data-color='#{color}'></li> ")
+
     $('.color-chooser li').click( (e) =>
-      imagePath = "images/labels/#{e.currentTarget.className}.jpg"
-      @background.prop('src', imagePath)
-      @container.get(0).className = "preview-screen #{e.currentTarget.className}"
+      color = $(e.currentTarget).data('color')
+      @background.prop('src', "images/labels/#{color}.jpg")
+      @container.removeClass(ViewHandler.colors.join(' '))
+                .addClass(color)
     )
 
   setupForm: =>
@@ -43,5 +54,5 @@ class ViewHandler
     parcel = 'Parzelle ' + $('#input-parcel').val()
     kga    = $('#select-kga').val()
     @from.text("#{parcel} | #{kga}")
-    
+
     @freeLine.text($('#input-free-text').val())
