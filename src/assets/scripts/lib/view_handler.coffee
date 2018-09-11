@@ -33,11 +33,14 @@ class ViewHandler
     @render()
 
   setupColorChooser: =>
+    firstClass = 'active'
     for color in Config.colors
-      $('.color-chooser').append("<li class='#{color}' data-color='#{color}'></li> ")
-
+      $('.color-chooser').append("<li class='#{color} #{firstClass}' data-color='#{color}'></li> ")
+      firstClass = ''
+      
     $('.color-chooser li').click( (e) =>
-      color = $(e.currentTarget).data('color')
+      $('.color-chooser li').removeClass('active')
+      color = $(e.currentTarget).addClass('active').data('color')
       @background.prop('src', "images/labels/#{color}.jpg")
       @container.removeClass(Config.colors.join(' '))
                 .addClass(color)
