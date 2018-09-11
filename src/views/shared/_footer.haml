@@ -1,4 +1,18 @@
-= @image_tag 'hr.webp'
+= @image_tag 'hr.png'
 
 %footer.footer
-  = @link_to @image_tag('da-waechst-was-header.webp'), 'https://www.dawaechstwas.de', target: '_blank'
+  %ul
+    %li
+      = @link_to 'Verbündete', 'https://www.dawaechstwas.de/verbuendete', target: '_blank'
+    %li
+      |
+      = @link_to 'Impressum', 'https://www.dawaechstwas.de/impressum', target: '_blank'
+    %li
+      |
+      = @link_to 'Datenschutz', 'https://www.dawaechstwas.de/datenschutz', target: '_blank'
+    %li
+      |
+      %small made with
+      = @image_tag 'heart.png'
+      %small by Gartenfreund
+      = @link_to 'Tom Hanoldt', 'https://www.tomhanoldt.info', target: '_blank'

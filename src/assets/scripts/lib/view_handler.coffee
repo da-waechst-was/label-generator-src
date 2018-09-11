@@ -1,17 +1,5 @@
 
 class ViewHandler
-  @colors = [
-    'bordeaux'
-    'himbeere'
-    'apricot'
-  ]
-
-  @kgas = [
-    ''
-    'Bornholm Eins e.V.'
-    'Bornholm Zwei e.V'
-  ]
-
   constructor: (@container) ->
     @background = $('.label-background', @container)
     @name       = $('.name', @container)
@@ -21,21 +9,37 @@ class ViewHandler
 
     @setupForm()
     @setupColorChooser()
-    @setupKGAChooser()
+    @setupUnionChooser()
     @render()
 
-  setupKGAChooser: =>
-    for kga in ViewHandler.kgas
+  setupUnionChooser: =>
+    for unionName, unionConfig of Config.unions
+      $('#select-union').append("<option value='#{unionName}'>#{unionName}</option>")
+
+    for kga in Config.unions['Bezirksverband Prenzlauer Berg']
       $('#select-kga').append("<option value='#{kga}'>#{kga}</option>")
 
+    $($('#select-kga').find('option').get(1)).attr('selected','selected')
+
+  updateKgas: =>
+    $('#select-kga').find('option').remove()
+
+    current = $('#select-union').val()
+    for kga in Config.unions[current]
+      $('#select-kga').append("<option value='#{kga}'>#{kga}</option>")
+
+    $($('#select-kga').find('option').get(1)).attr('selected','selected')
+
+    @render()
+
   setupColorChooser: =>
-    for color in ViewHandler.colors
+    for color in Config.colors
       $('.color-chooser').append("<li class='#{color}' data-color='#{color}'></li> ")
 
     $('.color-chooser li').click( (e) =>
       color = $(e.currentTarget).data('color')
       @background.prop('src', "images/labels/#{color}.jpg")
-      @container.removeClass(ViewHandler.colors.join(' '))
+      @container.removeClass(Config.colors.join(' '))
                 .addClass(color)
     )
 
@@ -49,21 +53,50 @@ class ViewHandler
     $('#input-parcel').change @render
     $('#input-free-text').keyup @render
     $('#select-kga').change @render
+    $('#select-union').change @updateKgas
     $('#select-month').change @render
     $('#select-year').change @render
 
     $('#button-print').click( =>
-      @container.print("styles/main.css")
+      doc = window.frames['printIframe']
+      content = @container.parent().html()
+      doc.document.body.innerHTML = content + content + content + content + content + content + content + content + content + content
+
+      # $(window.frames['printIframe']).ready( ->
+      #   doc.window.print()
+      # )
+      setTimeout(
+        ->
+          window.frames['printIframe'].window.print()
+        , 200
+      )
     )
+
+  updateIframeContent: =>
+    doc = window.frames['printIframe']
+    return unless doc
+    content = @container.parent().html()
+    doc.document.body.innerHTML = content + content + content + content + content + content + content + content + content + content
 
   render: =>
     @name.text($('#input-name').val())
 
-    date   = 'Vom ' + $('#select-month').val() + ' ' + $('#select-year').val()
+    date   = 'vom ' + $('#select-month').val() + ' ' + $('#select-year').val()
     @date.text(date)
 
-    parcel = 'Parzelle ' + $('#input-parcel').val()
+    parcel = $('#input-parcel').val()
     kga    = $('#select-kga').val()
-    @from.text("#{parcel} | #{kga}")
+    union  = $('#select-union').val()
+
+    if !parcel && !kga
+      from = "<div class='union single'>Aus dem #{union}</div>"
+    else
+      from = "<div class='union'>Aus dem #{union}</div>"
+      parcel = "Parzelle #{parcel}" if parcel
+      from = from + [parcel, kga].filter((e) -> e).join(' - ')
+
+    @from.html(from)
 
     @freeLine.text($('#input-free-text').val())
+
+    @updateIframeContent()

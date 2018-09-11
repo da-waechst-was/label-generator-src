@@ -29,20 +29,20 @@
         %select#select-year.form-control{:name => "select-year"}
 
 
+
     .form-group
-      %label.control-label{:for => "input-free-text"} Freitext
-      .control-input
-        %input#input-free-text.form-control.input-md.input-freetext{:name => "input-free-text", :placeholder => "", :type => "text"}
-        %span.help-block (maximal.200 Zeichen)
+      %label.control-label{:for => "select-union"} Verband
+      .form-inline
+        %select#select-union.form-control{:name => "select-union"}
 
     .form-group
       %label.control-label{:for => "select-kga"} Parzelle
       .form-inline
-        %input#input-parcel.form-control.input-md.input-parcel{:name => "input-parcel", :placeholder => "365", :type => "number", value: "365"}
+        %input#input-parcel.form-control.input-md.input-parcel{:name => "input-parcel", :placeholder => "265", :type => "number", value: "265"}
 
         %select#select-kga.form-control{:name => "select-kga"}
 
-      .form-group
+      .form-group.help
         %label.control-label
         %span.help-block
           (Deine Anlage fehlt? Dann
@@ -50,6 +50,13 @@
           uns)
 
     .form-group
+      %label.control-label{:for => "input-free-text"} Freitext
+      .control-input
+        %input#input-free-text.form-control.input-md.input-freetext{:name => "input-free-text", :placeholder => "", :type => "text"}
+
+    .form-group
       %label.control-label
       .control-input
         %button#button-print.btn.btn-success.pull-right{:name => "button-print"} Drucken
+        %span.help-block
+          *ACHTUNG! Bei falscher Druckdarstellung oder fehlenden Texten, bitte noch einmal auf "Drucken" klicken.

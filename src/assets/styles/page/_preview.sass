@@ -19,8 +19,8 @@
   border: 1px solid #ccc
   overflow: hidden
   position: relative
-  width: 380px
-  height: 200px
+  width: 365px
+  height: 196px
   .name, .from, .date, .free-line
     position: absolute
     text-align: center
@@ -29,30 +29,50 @@
     left: 0
 
   .name
-    top: 75px
+    top: 72px
     font-size: 30px
 
   .date
-    top: 110px
-    font-size: 12px
+    top: 107px
+    font-size: 11px
 
   .from
-    top: 122px
-    font-size: 14px
-    font-family: "Brandon-One"
+    top: 133px
+    font-size: 12px
+    text-transform: uppercase
+    .union
+      font-size: 13px
+      font-family: "Brandon-One"
+      padding-bottom: 2px
+    .single
+      position: relative
+      top: 10px
 
   .free-line
-    top: 160px
-    font-size: 14px
+    top: 178px
+    font-size: 11px
+
+@media print
+  *
+    font-size: 0
+  .preview-screen
+    max-width: 50%
+    float: left
+    margin: 0 !important
+    .preview-title, .color-chooser
+      display: none
 
 .preview-screen
+  .from
+    color: #fff !important
+    .union
+      color: #fff !important
+
   &.bordeaux
     .name
       color: $label-color-bordeaux !important
     .date
       color: $label-color-bordeaux !important
-    .from
-      color: #fff
     .free-line
       color: $label-color-bordeaux !important
 
@@ -61,8 +81,6 @@
       color: $label-color-apricot !important
     .date
       color: $label-color-apricot !important
-    .from
-      color: #fff
     .free-line
       color: $label-color-apricot !important
 
@@ -71,7 +89,5 @@
       color: $label-color-himbeere !important
     .date
       color: $label-color-himbeere !important
-    .from
-      color: #fff
     .free-line
       color: $label-color-himbeere !important
