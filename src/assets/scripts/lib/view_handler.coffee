@@ -6,6 +6,12 @@ class ViewHandler
     'apricot'
   ]
 
+  @kgas = [
+    ''
+    'Bornholm Eins e.V.'
+    'Bornholm Zwei e.V'
+  ]
+
   constructor: (@container) ->
     @background = $('.label-background', @container)
     @name       = $('.name', @container)
@@ -15,7 +21,12 @@ class ViewHandler
 
     @setupForm()
     @setupColorChooser()
+    @setupKGAChooser()
     @render()
+
+  setupKGAChooser: =>
+    for kga in ViewHandler.kgas
+      $('#select-kga').append("<option value='#{kga}'>#{kga}</option>")
 
   setupColorChooser: =>
     for color in ViewHandler.colors
