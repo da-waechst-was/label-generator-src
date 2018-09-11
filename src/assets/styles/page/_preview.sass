@@ -6,40 +6,43 @@
     box-shadow: 10px 10px 42px -6px rgba(0,0,0,0.56)
     margin: 0 auto
     +min-width-md
-      margin: 10px
+      margin: 10px auto
   .preview-title
     +max-width-sm
       display: block
 
 .preview-title
+  font-family: "Brandon-One"
   display: none
 
 .preview-screen
   border: 1px solid #ccc
   overflow: hidden
   position: relative
-  width: 432px
-  height: 228px
+  width: 380px
+  height: 200px
+  .name, .from, .date, .free-line
+    position: absolute
+    text-align: center
+    width: 100%
+    font-family: "Grotesk-Light"
+    left: 0
+
   .name
-    position: absolute
-    top: 63px
-    left: 0
-    width: 100%
-    text-align: center
+    top: 75px
     font-size: 30px
+
+  .date
+    top: 110px
+    font-size: 12px
+
   .from
-    text-align: center
-    position: absolute
     top: 122px
-    left: 0
-    width: 100%
     font-size: 14px
+    font-family: "Brandon-One"
+
   .free-line
-    text-align: center
-    position: absolute
     top: 160px
-    left: 0
-    width: 100%
     font-size: 14px
 
 .preview-screen
