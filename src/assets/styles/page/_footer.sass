@@ -1,15 +1,19 @@
 .footer
   width: 100%
-  padding: 20px 0
+  padding: 10px 0 5px 0
   color: $footer-text-color
   text-align: center
   > img
-    margin-top: 50px
+    margin-bottom: 10px
   ul
     list-style-type: none
     li
       +inline-block
-
+      small
+        font-size: 12px
+        &:first-child
+          padding: 0 0 0 3px
       a
-        font-weight: normal
         padding: 0 3px
+        font-weight: normal
+        font-size: 15px
