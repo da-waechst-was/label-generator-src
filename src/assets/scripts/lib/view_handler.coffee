@@ -7,6 +7,7 @@ class ViewHandler
     @from       = $('.from', @container)
     @date       = $('.date', @container)
     @freeLine   = $('.free-line', @container)
+    @freeLineInput = $('#input-free-text')
 
     @setupForm()
     @setupColorChooser()
@@ -32,6 +33,14 @@ class ViewHandler
     $($('#select-kga').find('option').get(1)).attr('selected','selected')
 
     @render()
+
+  updateName: =>
+    @render()
+    @name.textfill(30)
+
+  updateFreeText: =>
+    @render()
+    @freeLineInput.inputmaxsize(@freeLine, 10)
 
   updateParcel: =>
     if $('#select-kga').val() != ViewHandler.facilityMissingString
@@ -62,10 +71,11 @@ class ViewHandler
     for year in [currentYear, currentYear - 1, currentYear - 2, currentYear - 3]
       $('#select-year').append($('<option>', {value: year, text: year}))
 
-    $('#input-name').keyup @render
+    $('#input-name').keyup @updateName
     $('#input-parcel').keyup @render
     $('#input-parcel').change @render
-    $('#input-free-text').keyup @render
+    @freeLineInput.keyup @updateFreeText
+    @freeLineInput.change @updateFreeText
     $('#select-kga').change @updateParcel
     $('#select-union').change @updateKgas
     $('#select-month').change @render
@@ -93,7 +103,7 @@ class ViewHandler
     doc.document.body.innerHTML = content + content + content + content + content + content + content + content + content + content
 
   render: =>
-    @name.text($('#input-name').val())
+    @name.html('<span>' + $('#input-name').val() + '</span>')
 
     date   = 'vom ' + $('#select-month').val() + ' ' + $('#select-year').val()
     @date.text(date)
@@ -111,6 +121,6 @@ class ViewHandler
 
     @from.html(from)
 
-    @freeLine.text($('#input-free-text').val())
+    @freeLine.html('<span>' + $('#input-free-text').val() + '</span>')
 
     @updateIframeContent()
