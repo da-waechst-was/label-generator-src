@@ -1,5 +1,6 @@
 .hr-notes
-  margin-top: 30px
+  +min-width-sm
+    margin-top: 30px
 
 .notes
   clear: both
@@ -8,6 +9,14 @@
     font-size: 40px
 
   ul
+    list-style-type: none
     li
       font-size: 18px
       line-height: 26px
+      padding-bottom: 5px
+      &::before
+        content: "•"
+        color: $page-color-darkgrey
+        display: inline-block
+        width: 1em
+        margin-left: -1em

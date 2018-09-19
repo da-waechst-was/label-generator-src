@@ -22,10 +22,13 @@ a, a:hover
   font-weight: bold
 
 .generator-title
-  padding: 30px 0 20px 0
   font-family: "Brandon-One"
   color: $page-color-green
-  font-size: 50px
+  padding: 10px 0 20px 0
+  font-size: 40px
+  +min-width-sm
+    padding: 30px 0 20px 0
+    font-size: 50px
 
 .preview-title
   +min-width-md
@@ -41,12 +44,19 @@ a, a:hover
   box-shadow: 5px 10px 42px -6px rgba(0,0,0,0.3)
 
   .content-inner-wrapper
-
     padding: 20px 0
     +headlines
       text-align: center
     p
       text-align: center
 
-    article
+    article, .form
       padding: 0 15px
+
+    article.preview
+      +max-width-xs
+        padding: 0
+
+    // +max-width-sm
+    .preview, .form
+      float: right
