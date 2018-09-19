@@ -32,12 +32,22 @@ class ViewHandler
 
     @render()
 
+  updateParcel: =>
+    if $('#select-kga').val()
+      $('#input-parcel').removeAttr('disabled')
+                        .css('text-indent', '0px')
+    else
+      $('#input-parcel').attr('disabled', 'disabled')
+                        .css('text-indent', '-100000px')
+
+    @render()
+
   setupColorChooser: =>
     firstClass = 'active'
     for color in Config.colors
       $('.color-chooser').append("<li class='#{color} #{firstClass}' data-color='#{color}'></li> ")
       firstClass = ''
-      
+
     $('.color-chooser li').click( (e) =>
       $('.color-chooser li').removeClass('active')
       color = $(e.currentTarget).addClass('active').data('color')
@@ -55,7 +65,7 @@ class ViewHandler
     $('#input-parcel').keyup @render
     $('#input-parcel').change @render
     $('#input-free-text').keyup @render
-    $('#select-kga').change @render
+    $('#select-kga').change @updateParcel
     $('#select-union').change @updateKgas
     $('#select-month').change @render
     $('#select-year').change @render
@@ -91,7 +101,7 @@ class ViewHandler
     kga    = $('#select-kga').val()
     union  = $('#select-union').val()
 
-    if !parcel && !kga
+    if !kga
       from = "<div class='union single'>Aus dem #{union}</div>"
     else
       from = "<div class='union'>Aus dem #{union}</div>"
