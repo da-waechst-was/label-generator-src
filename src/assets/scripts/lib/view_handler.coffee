@@ -1,5 +1,6 @@
 
 class ViewHandler
+  @facilityMissingString = 'Anlage nicht dabei'
   constructor: (@container) ->
     @background = $('.label-background', @container)
     @name       = $('.name', @container)
@@ -33,7 +34,7 @@ class ViewHandler
     @render()
 
   updateParcel: =>
-    if $('#select-kga').val()
+    if $('#select-kga').val() != ViewHandler.facilityMissingString
       $('#input-parcel').removeAttr('disabled')
                         .css('text-indent', '0px')
     else
@@ -101,7 +102,7 @@ class ViewHandler
     kga    = $('#select-kga').val()
     union  = $('#select-union').val()
 
-    if !kga
+    if kga == ViewHandler.facilityMissingString
       from = "<div class='union single'>Aus dem #{union}</div>"
     else
       from = "<div class='union'>Aus dem #{union}</div>"
