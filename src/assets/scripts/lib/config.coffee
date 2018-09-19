@@ -19,7 +19,4 @@ class Config
       ''
       'Hoffnung e.V.'
     ]
-    'Bezirksverband Weißensee': [
-      ''
-    ]
   }
